@@ -11,6 +11,9 @@ import * as d3 from 'd3';
 const globeContainer = document.getElementById('globeViz');
 
 const colorScale = d3.scaleSequentialPow(d3.interpolateYlOrRd).exponent(1 / 4);
+const getVal = (feat) => {
+  return "hi";
+};
 
 let world;
 
@@ -23,9 +26,18 @@ function init() {
     .backgroundImageUrl(BACKGROUND_IMAGE_URL)
     .showGraticules(false)
     .polygonAltitude(0.06)
-    .polygonCapColor(white)
     .polygonSideColor(() => 'rgba(0,0,100,0)')
     .polygonStrokeColor(() => '#111')
+    .onPolygonHover((hoverD) =>
+      world
+        .polygonAltitude((d) => (d === hoverD ? 0.12 : 0.06))
+        .polygonCapColor((d) =>
+          d === hoverD ? 'steelblue' : colorScale(getVal(d))
+        )
+    )
+    .polygonsTransitionDuration(200);
+
+  getSongs();
 }
 
 
