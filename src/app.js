@@ -28,6 +28,24 @@ function init() {
     .polygonAltitude(0.06)
     .polygonSideColor(() => 'rgba(0,0,100,0)')
     .polygonStrokeColor(() => '#111')
+    .polygonLabel(({ properties: d}) => {
+      return `
+        <div class="card">
+          <div class="container">
+             <span class="card-title"><b>${d.NAME}</b></span> <br />
+             <div class="card-spacer"></div>
+             <hr />
+             Top 5 Songs<br>
+             1.<br>
+             2.<br>
+             3.<br>
+             4.<br>
+             5.<br>
+             <div class="card-spacer"></div>
+          </div>
+        </div>
+      `;
+    })
     .onPolygonHover((hoverD) =>
       world
         .polygonAltitude((d) => (d === hoverD ? 0.12 : 0.06))
