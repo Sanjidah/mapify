@@ -6,6 +6,18 @@ import {
   GEOJSON_URL,
 } from './constants';
 import * as d3 from 'd3';
+import React from "react";
+import "./App.css";
+import Login from "./Login";
+
+function App() {
+  return (
+    <div className="app">
+      <Login />
+    </div>
+  );
+}
+
 
 // Globe container
 const globeContainer = document.getElementById('globeViz');
@@ -108,3 +120,4 @@ window.addEventListener('resize', (event) => {
   world.height([event.target.innerHeight]);
 });
 
+// export default App;
